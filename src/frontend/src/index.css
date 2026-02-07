@@ -1,0 +1,383 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        --background: 0.98 0.05 350;
+        --foreground: 0.2 0.02 350;
+        --card: 1 0 0;
+        --card-foreground: 0.145 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.145 0 0;
+        --primary: 0.65 0.25 350;
+        --primary-foreground: 0.985 0 0;
+        --secondary: 0.97 0.03 350;
+        --secondary-foreground: 0.205 0 0;
+        --muted: 0.97 0 0;
+        --muted-foreground: 0.556 0 0;
+        --accent: 0.75 0.2 10;
+        --accent-foreground: 0.985 0 0;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.922 0 0;
+        --input: 0.922 0 0;
+        --ring: 0.708 0.15 350;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+        --sidebar: 0.985 0 0;
+        --sidebar-foreground: 0.145 0 0;
+        --sidebar-primary: 0.205 0 0;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.97 0 0;
+        --sidebar-accent-foreground: 0.205 0 0;
+        --sidebar-border: 0.922 0 0;
+        --sidebar-ring: 0.708 0 0;
+        
+        /* Breakpoint-based global scale */
+        --app-scale: 1.1;
+    }
+
+    .dark {
+        --background: 0.145 0 0;
+        --foreground: 0.985 0 0;
+        --card: 0.205 0 0;
+        --card-foreground: 0.985 0 0;
+        --popover: 0.269 0 0;
+        --popover-foreground: 0.985 0 0;
+        --primary: 0.922 0 0;
+        --primary-foreground: 0.205 0 0;
+        --secondary: 0.269 0 0;
+        --secondary-foreground: 0.985 0 0;
+        --muted: 0.269 0 0;
+        --muted-foreground: 0.708 0 0;
+        --accent: 0.371 0 0;
+        --accent-foreground: 0.985 0 0;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.205 0 0;
+        --border: 1 0 0 / 10%;
+        --input: 1 0 0 / 15%;
+        --ring: 0.556 0 0;
+        --chart-1: 0.488 0.243 264.376;
+        --chart-2: 0.696 0.17 162.48;
+        --chart-3: 0.769 0.188 70.08;
+        --chart-4: 0.627 0.265 303.9;
+        --chart-5: 0.645 0.246 16.439;
+        --sidebar: 0.205 0 0;
+        --sidebar-foreground: 0.985 0 0;
+        --sidebar-primary: 0.488 0.243 264.376;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.269 0 0;
+        --sidebar-accent-foreground: 0.985 0 0;
+        --sidebar-border: 1 0 0 / 10%;
+        --sidebar-ring: 0.439 0 0;
+    }
+
+    /* Tablet breakpoint scale-up */
+    @media (min-width: 640px) {
+        :root {
+            --app-scale: 1.25;
+        }
+    }
+
+    /* Desktop breakpoint scale-up */
+    @media (min-width: 1024px) {
+        :root {
+            --app-scale: 1.4;
+        }
+    }
+
+    /* Base font size scaling for rem units */
+    html {
+        font-size: calc(16px * var(--app-scale));
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer utilities {
+    /* Romantic gradient background */
+    .bg-romantic-gradient {
+        background: linear-gradient(135deg, 
+            oklch(0.85 0.15 350) 0%,
+            oklch(0.70 0.25 10) 35%,
+            oklch(0.65 0.20 350) 65%,
+            oklch(0.75 0.12 300) 100%
+        );
+    }
+
+    /* Gradient radial */
+    .bg-gradient-radial {
+        background: radial-gradient(circle at center, var(--tw-gradient-stops));
+    }
+
+    /* Romantic text color */
+    .text-romantic-text {
+        color: oklch(0.95 0.05 350);
+    }
+
+    /* Drop shadow for romantic text */
+    .drop-shadow-romantic {
+        filter: drop-shadow(0 0.25rem 0.75rem oklch(0.65 0.25 350 / 0.4))
+                drop-shadow(0 0.125rem 0.25rem oklch(0.5 0.2 350 / 0.3));
+    }
+
+    /* Romantic glow shadow */
+    .shadow-romantic-glow {
+        box-shadow: 0 0 calc(1.25rem * var(--app-scale)) oklch(0.70 0.25 350 / 0.6),
+                    0 0 calc(2.5rem * var(--app-scale)) oklch(0.65 0.20 10 / 0.4),
+                    0 0.25rem 0.75rem oklch(0 0 0 / 0.2);
+    }
+
+    .shadow-romantic-glow-intense {
+        box-shadow: 0 0 calc(1.875rem * var(--app-scale)) oklch(0.70 0.25 350 / 0.8),
+                    0 0 calc(3.75rem * var(--app-scale)) oklch(0.65 0.20 10 / 0.6),
+                    0 0.5rem 1.25rem oklch(0 0 0 / 0.3);
+    }
+
+    /* Bokeh light effects */
+    .bokeh-light {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(calc(3.75rem * var(--app-scale)));
+        opacity: 0.3;
+        animation: float 20s infinite ease-in-out;
+    }
+
+    .bokeh-1 {
+        width: calc(18.75rem * var(--app-scale));
+        height: calc(18.75rem * var(--app-scale));
+        background: oklch(0.80 0.20 350);
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .bokeh-2 {
+        width: calc(15.625rem * var(--app-scale));
+        height: calc(15.625rem * var(--app-scale));
+        background: oklch(0.75 0.25 10);
+        top: 60%;
+        right: 15%;
+        animation-delay: 3s;
+    }
+
+    .bokeh-3 {
+        width: calc(12.5rem * var(--app-scale));
+        height: calc(12.5rem * var(--app-scale));
+        background: oklch(0.70 0.15 300);
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 6s;
+    }
+
+    .bokeh-4 {
+        width: calc(17.5rem * var(--app-scale));
+        height: calc(17.5rem * var(--app-scale));
+        background: oklch(0.75 0.20 340);
+        top: 30%;
+        right: 25%;
+        animation-delay: 9s;
+    }
+
+    .bokeh-5 {
+        width: calc(13.75rem * var(--app-scale));
+        height: calc(13.75rem * var(--app-scale));
+        background: oklch(0.80 0.18 20);
+        bottom: 30%;
+        right: 10%;
+        animation-delay: 12s;
+    }
+
+    /* Modal glassmorphism */
+    .modal-glass {
+        background: linear-gradient(135deg, 
+            oklch(0.75 0.20 350 / 0.95) 0%,
+            oklch(0.70 0.25 10 / 0.90) 100%
+        );
+        backdrop-filter: blur(1.25rem);
+        box-shadow: 0 0.5rem 2rem oklch(0 0 0 / 0.3),
+                    0 0 3.75rem oklch(0.70 0.25 350 / 0.5),
+                    inset 0 0.0625rem 0.0625rem oklch(1 0 0 / 0.2);
+        border: 1px solid oklch(1 0 0 / 0.2);
+    }
+
+    /* Sparkles */
+    .sparkle {
+        position: absolute;
+        font-size: calc(1.5rem * var(--app-scale));
+        animation: sparkle 2s infinite ease-in-out;
+    }
+
+    .sparkle-1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .sparkle-2 { top: 15%; right: 15%; animation-delay: 0.3s; }
+    .sparkle-3 { bottom: 20%; left: 20%; animation-delay: 0.6s; }
+    .sparkle-4 { bottom: 15%; right: 10%; animation-delay: 0.9s; }
+    .sparkle-5 { top: 50%; left: 5%; animation-delay: 1.2s; }
+    .sparkle-6 { top: 50%; right: 5%; animation-delay: 1.5s; }
+
+    /* Floating heart outlines */
+    .floating-heart-outline {
+        position: absolute;
+        font-size: calc(3rem * var(--app-scale));
+        color: oklch(1 0 0 / 0.3);
+        animation: float-heart 4s infinite ease-in-out;
+    }
+
+    .floating-heart-1 { top: 20%; left: -5%; animation-delay: 0s; }
+    .floating-heart-2 { top: 70%; left: -5%; animation-delay: 1s; }
+    .floating-heart-3 { top: 20%; right: -5%; animation-delay: 2s; }
+    .floating-heart-4 { top: 70%; right: -5%; animation-delay: 3s; }
+}
+
+@layer components {
+    /* Romantic title font */
+    .romantic-title {
+        font-family: 'Brush Script MT', 'Lucida Handwriting', 'Apple Chancery', cursive;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* Keyframe animations */
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(1.25rem, -1.25rem) scale(1.05);
+    }
+    50% {
+        transform: translate(-0.9375rem, 0.9375rem) scale(0.95);
+    }
+    75% {
+        transform: translate(0.9375rem, 0.625rem) scale(1.02);
+    }
+}
+
+@keyframes heart-beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.1);
+    }
+    20%, 40% {
+        transform: scale(1);
+    }
+}
+
+@keyframes heartbeat-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+@keyframes float-heart {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-1.25rem) rotate(10deg);
+        opacity: 0.6;
+    }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-3.125rem) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0.5;
+    }
+}
+
+@keyframes emoji-burst {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) 
+                   translate(
+                       calc(cos(var(--angle)) * var(--distance)),
+                       calc(sin(var(--angle)) * var(--distance))
+                   ) 
+                   scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes emoji-float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-6.25rem) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes celebration-zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+/* Apply animations */
+.animate-heart-beat {
+    animation: heart-beat 1.5s infinite ease-in-out;
+}
+
+.animate-heartbeat-pulse {
+    animation: heartbeat-pulse 3s infinite ease-in-out;
+}
+
+.animate-confetti-fall {
+    animation: confetti-fall linear forwards;
+}
+
+.animate-emoji-burst {
+    animation: emoji-burst 2s ease-out forwards;
+}
+
+.animate-emoji-float {
+    animation: emoji-float 2s ease-out forwards;
+}
+
+.animate-celebration-zoom {
+    animation: celebration-zoom 1s ease-out forwards;
+}

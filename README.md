@@ -1,2 +1,3 @@
-# interactive-valentine-proposal-single-page-experience-evasive-no-yes-celebration
-Exported from Caffeine project: Apply updates to existing Valentine proposal draft (auto-moving NO button + denser bottom hearts after YES)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

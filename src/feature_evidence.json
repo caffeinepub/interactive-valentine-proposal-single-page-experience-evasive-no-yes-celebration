@@ -1,0 +1,78 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-make-the-evasive-no-button-start-moving-around-immediately-from-initial-page-load-not-only-after-hover-tap-while-keeping-its-current-evasive-behavior-on-hover-tap-random-relocation-slightly-smaller-slightly-faster-phrase-progression",
+      "featureTitle": "Make the evasive \"NO\" button start moving around immediately from initial page load (not only after hover/tap), while keeping its current evasive behavior on hover/tap (random relocation, slightly smaller, slightly faster, phrase progression).",
+      "files": [
+        "frontend/src/components/proposal/EvasiveNoButton.tsx",
+        "frontend/src/hooks/useEvasiveNo.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-evasive-no-button-is-never-keyboard-focusable-selectable-including-tab-navigation-and-remains-effectively-unclickable-on-all-supported-devices",
+      "featureTitle": "Ensure the evasive \"NO\" button is never keyboard-focusable/selectable (including Tab navigation) and remains effectively unclickable on all supported devices.",
+      "files": [
+        "frontend/src/components/proposal/EvasiveNoButton.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-keep-the-new-phrase-exactly-as-provided-in-the-evasive-no-button-phrase-progression-list-one-more-chance-please-binnu",
+      "featureTitle": "Keep the new phrase exactly as provided in the evasive \"NO\" button phrase progression list: `One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏 `.",
+      "files": [
+        "frontend/src/hooks/useEvasiveNo.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-after-clicking-yes-when-the-proposal-state-is-celebrating-or-completed-increase-fill-the-heart-background-effect-so-it-is-noticeably-denser-and-visually-concentrated-toward-the-bottom-of-the-viewport",
+      "featureTitle": "After clicking YES (when the proposal state is celebrating or completed), increase/fill the heart background effect so it is noticeably denser and visually concentrated toward the bottom of the viewport.",
+      "files": [
+        "frontend/src/components/romance/HeartParticlesCanvas.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

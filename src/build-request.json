@@ -1,0 +1,91 @@
+{
+  "kind": "build_request",
+  "title": "Apply updates to existing Valentine proposal draft (auto-moving NO button + denser bottom hearts after YES)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Make the evasive \"NO\" button start moving around immediately from initial page load (not only after hover/tap), while keeping its current evasive behavior on hover/tap (random relocation, slightly smaller, slightly faster, phrase progression).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "have the no button move from around from the start."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On first render in the idle state, the NO button changes position on its own without requiring any pointer interaction.",
+        "Auto-movement does not change the label phrase or size; only hover/tap attempts do.",
+        "Auto-movement continues to respect safe bounds so the button remains fully on-screen across mobile/tablet/desktop and after orientation changes."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Ensure the evasive \"NO\" button is never keyboard-focusable/selectable (including Tab navigation) and remains effectively unclickable on all supported devices.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "It should never be clickable",
+          "Prevent keyboard/tab selection too"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The NO button cannot be focused via Tab/Shift+Tab.",
+        "Pressing Enter/Space cannot activate the NO button.",
+        "Touch interactions still trigger evasive movement (dodges finger tap) and do not scroll the page due to the interaction."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Keep the new phrase exactly as provided in the evasive \"NO\" button phrase progression list: `One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏 `.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "add in to the const phrases- the list of phrases being displayed the following 'One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏 '"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The phrase appears exactly (including spacing and emojis) as one of the possible NO button labels during repeated attempts.",
+        "No other phrases are removed or reordered unexpectedly."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "After clicking YES (when the proposal state is celebrating or completed), increase/fill the heart background effect so it is noticeably denser and visually concentrated toward the bottom of the viewport.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "also fill/increase the 3d hearts found at bottom  in background after the yes is clicked."
+        ]
+      },
+      "acceptanceCriteria": [
+        "In idle state, the background heart particle density remains at its normal level.",
+        "In celebrating/completed states, the background heart particles are clearly denser than idle and biased toward the lower portion of the screen.",
+        "The effect remains smooth (no visible jank) on mobile-sized viewports."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services)."
+  ],
+  "nonGoals": [
+    "Add or change backend logic (the app is currently frontend-only).",
+    "Introduce external services, third-party auth providers, or real-time messaging."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

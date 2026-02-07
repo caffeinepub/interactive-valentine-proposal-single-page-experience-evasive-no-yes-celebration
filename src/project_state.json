@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Interactive romantic single-page Valentine proposal website with centered main question, playful YES/NO interactions, responsive design, optional music/sfx, and a celebratory heart/confetti/emoji explosion with enhanced physics on YES click.",
+  "architectural_notes": [
+    "Single-page interactive web experience; central focus is the main Valentine question with minimal extra text.",
+    "Use requestAnimationFrame for physics-driven celebration particles/hearts; stop/fade effects after a few seconds to prevent clutter/perf issues.",
+    "NO button must be non-interactive (no click, no keyboard focus) and respond to both pointer hover and touch/pointerdown on mobile.",
+    "Mobile-first responsive layout using relative units (vw/vh/%/rem) and media queries; support portrait/landscape.",
+    "Include optional audio via a user-controlled toggle; avoid autoplay that may be blocked by browsers."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-make-the-evasive-no-button-start-moving-around-immediately-from-initial-page-load-not-only-after-hover-tap-while-keeping-its-current-evasive-behavior-on-hover-tap-random-relocation-slightly-smaller-slightly-faster-phrase-progression",
+      "title": "Make the evasive \"NO\" button start moving around immediately from initial page load (not only after hover/tap), while keeping its current evasive behavior on hover/tap (random relocation, slightly smaller, slightly faster, phrase progression).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-evasive-no-button-is-never-keyboard-focusable-selectable-including-tab-navigation-and-remains-effectively-unclickable-on-all-supported-devices",
+      "title": "Ensure the evasive \"NO\" button is never keyboard-focusable/selectable (including Tab navigation) and remains effectively unclickable on all supported devices.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-the-new-phrase-exactly-as-provided-in-the-evasive-no-button-phrase-progression-list-one-more-chance-please-binnu",
+      "title": "Keep the new phrase exactly as provided in the evasive \"NO\" button phrase progression list: `One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏 `.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-after-clicking-yes-when-the-proposal-state-is-celebrating-or-completed-increase-fill-the-heart-background-effect-so-it-is-noticeably-denser-and-visually-concentrated-toward-the-bottom-of-the-viewport",
+      "title": "After clicking YES (when the proposal state is celebrating or completed), increase/fill the heart background effect so it is noticeably denser and visually concentrated toward the bottom of the viewport.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create romantic single-page Valentine proposal page with centered main question, romantic typography, gradient background, bokeh/glow, and subtle floating heart particles + heartbeat pulse animation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement YES button: large rounded gradient button with glow/hover bounce; stays fixed in place; clicking triggers celebration sequence and modal",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement evasive NO button: moves away on hover/tap, becomes smaller/faster, dynamic phrases (including 'One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏'), never clickable, and not focusable via keyboard/tab; also start moving from the beginning",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "YES click celebration: screen explosion with 3D animated hearts, floating emojis, heart confetti, background darken, zoom toward center, and glassmorphism romantic modal with sparkles/heart outlines",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Enhanced heart explosion physics: requestAnimationFrame loop with randomized velocity/rotation, gravity, bounce with damping off edges, settle/fade after a few seconds; increase/fill 3D hearts especially near bottom after YES",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Full responsiveness across mobile/tablet/desktop with relative units and media queries; ensure centered main question; scale buttons proportionally; support portrait/landscape; ensure touch interactions (NO dodges finger tap) and prevent overflow/cutoffs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add optional background music with toggle plus click/celebration sound effects; add subtle emoji reactions near cursor",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Prevent accidental refresh from ruining the experience (e.g., guard/confirmation or state persistence) and keep animations smooth/performance-optimized (no jank, mobile-friendly)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Apply updates to existing Valentine proposal draft (auto-moving NO button + denser bottom hearts after YES)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

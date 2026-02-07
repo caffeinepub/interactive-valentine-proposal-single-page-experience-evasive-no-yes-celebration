@@ -1,0 +1,25 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T14:11:27.252Z",
+  "summary": "REQ-1/2/3/4 are largely implemented: NO button now auto-moves on mount with safe bounds and remains non-focusable/unclickable; the exact new phrase is present; heart particles support a denser, bottom-biased mode after YES. One aspect of REQ-1 (“slightly faster” on hover/tap attempts) is not evidenced in the diff.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "On hover/tap attempts, the evasive NO button should become “slightly faster” in addition to random relocation, shrinking, and phrase progression.",
+      "reason": "The hook decreases size and changes position on interaction, but no speed/interval/animation-duration change tied to attempt count is shown. Auto-movement uses a fixed 2000ms interval and does not change based on attempts.",
+      "evidence": [
+        "frontend/src/hooks/useEvasiveNo.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/proposal/EvasiveNoButton.tsx",
+    "frontend/src/components/romance/HeartParticlesCanvas.tsx",
+    "frontend/src/hooks/useEvasiveNo.ts",
+    "project_state.json"
+  ]
+}

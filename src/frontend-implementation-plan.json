@@ -1,0 +1,80 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Valentine proposal polish: instant evasive NO + denser bottom hearts after YES",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Start NO button auto-movement immediately on initial render while preserving interaction-only phrase/size changes and safe-bounds behavior.",
+      "acceptanceCriteria": [
+        "On first render in the idle state, the NO button changes position on its own without requiring any pointer interaction.",
+        "Auto-movement does not change the label phrase or size; only hover/tap attempts do.",
+        "Auto-movement continues to respect safe bounds so the button remains fully on-screen across mobile/tablet/desktop and after orientation changes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useEvasiveNo.ts",
+          "operation": "modify",
+          "description": "Adjust the auto-movement timing so it begins immediately on mount (remove/shorten initial delay) while ensuring auto-moves only change position (not attemptCount/label/size). Keep safe-bounds logic and ensure bounds are recomputed correctly after resize/orientation changes."
+        },
+        {
+          "path": "frontend/src/components/proposal/EvasiveNoButton.tsx",
+          "operation": "modify",
+          "description": "Wire any new motion-speed/transition props returned from useEvasiveNo (if added) so hover/tap attempts feel 'slightly faster' without auto-movement altering phrase/size. Ensure the button remains positioned via fixed coordinates and stays fully on-screen per hook-provided safe positions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Make the NO button non-focusable and non-activatable by keyboard while still dodging hover/touch without causing scroll.",
+      "acceptanceCriteria": [
+        "The NO button cannot be focused via Tab/Shift+Tab.",
+        "Pressing Enter/Space cannot activate the NO button.",
+        "Touch interactions still trigger evasive movement (dodges finger tap) and do not scroll the page due to the interaction."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/proposal/EvasiveNoButton.tsx",
+          "operation": "modify",
+          "description": "Prevent keyboard focus/activation by setting tabIndex to -1, preventing default on key events (Enter/Space), and immediately blurring on focus if it occurs. Prevent click activation by suppressing onClick/default behavior while still triggering evasive movement on pointer/touch attempts. Ensure touch/pointer handlers prevent default to avoid scroll/gesture side-effects (while keeping existing evasive behavior)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Preserve the provided phrase exactly in the NO button phrase progression list without removing or reordering other phrases.",
+      "acceptanceCriteria": [
+        "The phrase appears exactly (including spacing and emojis) as one of the possible NO button labels during repeated attempts.",
+        "No other phrases are removed or reordered unexpectedly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useEvasiveNo.ts",
+          "operation": "modify",
+          "description": "Confirm the phrase list contains the exact string `One More  Chance 🥺💝💕, Please Binnu!! 🙏 🙏 ` and that phrase ordering is preserved while making other hook changes (e.g., auto-movement timing)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Increase and bottom-bias heart particle background density after YES while keeping idle density unchanged and animation smooth on mobile.",
+      "acceptanceCriteria": [
+        "In idle state, the background heart particle density remains at its normal level.",
+        "In celebrating/completed states, the background heart particles are clearly denser than idle and biased toward the lower portion of the screen.",
+        "The effect remains smooth (no visible jank) on mobile-sized viewports."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/romance/HeartParticlesCanvas.tsx",
+          "operation": "modify",
+          "description": "Increase dense-mode particle count and bias spawning more strongly toward the bottom portion of the viewport (e.g., bottom-weighted distribution). Improve rendering smoothness by using devicePixelRatio-aware canvas sizing and avoiding unnecessary particle reinitialization work when toggling dense mode."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure HeartParticlesCanvas receives the correct state-driven flag for idle vs celebrating/completed, and (if needed) pass additional props to control density/bottom-bias intensity specifically after YES without affecting idle visuals."
+        }
+      ]
+    }
+  ]
+}
